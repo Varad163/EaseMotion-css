@@ -1,0 +1,316 @@
+/* ============================================================
+   EaseMotion Programmatic API Showcase Stylesheet
+   Submission for EaseMotion CSS · Suffix '-ag'
+   ============================================================ */
+
+/* ── Minimalist Dashboard ────────────────────────────────── */
+
+.dashboard-ag {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --border-color: #edf2f7;
+  --text-color: #2d3748;
+  --muted-color: #718096;
+  --primary-color: var(--ease-color-primary, #6366f1);
+  --primary-glow: rgba(99, 102, 241, 0.15);
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  font-family: "Inter", system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dashboard-ag {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --text-color: #f8fafc;
+    --muted-color: #94a3b8;
+  }
+}
+
+.panel-header-ag {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.panel-title-ag {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* Controller cards row */
+.controller-deck-ag {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.controller-card-ag {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+}
+
+.card-title-ag {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--muted-color);
+  letter-spacing: 0.5px;
+}
+
+/* ── Interactive Modal Styles ───────────────────────────── */
+
+.ease-modal-overlay-ag {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.ease-modal-overlay-ag.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ease-modal-ag {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  transform: scale(0.9) translateY(12px);
+  opacity: 0;
+  transition:
+    transform 0.4s var(--ease-ease-bounce, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    opacity 0.4s ease;
+}
+
+.ease-modal-overlay-ag.is-active .ease-modal-ag {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-header-ag {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body-ag {
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.modal-footer-ag {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* ── Programmatic Tabs Styles ────────────────────────────── */
+
+.ease-tabs-container-ag {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ease-tabs-header-ag {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding: 0;
+  margin: 0;
+}
+
+.ease-tab-btn-ag {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 0.25rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted-color);
+  cursor: pointer;
+  outline: none;
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.ease-tab-btn-ag.is-active,
+.ease-tab-btn-ag:hover {
+  color: var(--primary-color);
+}
+
+/* Dynamic Underline slider */
+.ease-tab-underline-ag {
+  position: absolute;
+  bottom: -2px;
+  left: var(--ease-tab-left, 0px);
+  width: var(--ease-tab-width, 0px);
+  height: 2px;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 6px var(--primary-glow);
+
+  /* Underline slide easing */
+  transition:
+    left 0.35s var(--ease-ease, cubic-bezier(0.25, 1, 0.5, 1)),
+    width 0.35s var(--ease-ease, cubic-bezier(0.25, 1, 0.5, 1));
+}
+
+.tabs-content-ag {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  min-height: 120px;
+}
+
+.ease-tab-panel-ag {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── Programmatic Reveal Styles ──────────────────────────── */
+
+.reveal-list-ag {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.reveal-item-ag {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+.ease-reveal-ag {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s var(--ease-ease, cubic-bezier(0.25, 1, 0.5, 1)),
+    transform 0.6s var(--ease-ease, cubic-bezier(0.25, 1, 0.5, 1));
+}
+
+.ease-reveal-ag.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Global UI Components (Buttons / Form tags) ─────────── */
+
+.btn-ag {
+  background-color: var(--primary-color);
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform var(--ease-speed-fast, 150ms)
+      var(--ease-ease-bounce, cubic-bezier(0.34, 1.56, 0.64, 1));
+  box-shadow: 0 4px 12px var(--primary-glow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.btn-ag:hover {
+  transform: scale(1.03);
+}
+
+.btn-ag:active {
+  transform: scale(0.97);
+}
+
+.btn-outline-ag {
+  background-color: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-color);
+  box-shadow: none;
+}
+
+.btn-outline-ag:hover {
+  background-color: var(--border-color);
+  color: var(--text-color);
+  transform: none;
+}
+
+.btn-close-ag {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--muted-color);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-close-ag:hover {
+  color: var(--text-color);
+}
+
+/* ── Accessibility: Reduced Motion Override ───────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .ease-modal-overlay-ag,
+  .ease-modal-ag,
+  .ease-tab-underline-ag,
+  .ease-reveal-ag,
+  .btn-ag {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
