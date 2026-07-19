@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Avatar Showcase — EaseMotion CSS</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- EaseMotion Core and Local Stylesheet -->
+    <link rel="stylesheet" href="../../../easemotion.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* Demo presentation wrapper styles */
+      body {
+        background-color: #f0e6d2;
+        background-image:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(49, 130, 206, 0.03) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 85% 80%,
+            rgba(229, 62, 62, 0.03) 0%,
+            transparent 40%
+          );
+        color: #4a3728;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.5rem;
+        transition:
+          background-color 0.3s,
+          color 0.3s;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #121824;
+          color: #edf2f7;
+        }
+      }
+
+      .demo-intro {
+        text-align: center;
+        max-width: 600px;
+        margin-bottom: 3.5rem;
+      }
+
+      .demo-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        color: #3182ce;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .demo-tag {
+          color: #63b3ed;
+        }
+      }
+
+      .demo-title {
+        font-size: 2.25rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.75rem;
+        color: #4a3728;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .demo-title {
+          color: #ffffff;
+        }
+      }
+
+      .demo-desc {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #718096;
+      }
+
+      /* Helper info bar */
+      .postcard-helper-ag {
+        background: rgba(49, 130, 206, 0.04);
+        border: 1px dashed rgba(49, 130, 206, 0.2);
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        text-align: center;
+        max-width: 620px;
+        width: 100%;
+        margin-top: 2rem;
+        color: #3182ce;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .postcard-helper-ag {
+          color: #63b3ed;
+          border-color: rgba(99, 179, 237, 0.2);
+        }
+      }
+
+      /* Documentation Section */
+      .demo-docs-ag {
+        margin-top: 3.5rem;
+        max-width: 620px;
+        width: 100%;
+        background: #f7ebdb;
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid #e3d5c4;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .demo-docs-ag {
+          background-color: #1a202c;
+          border-color: #2d3748;
+        }
+      }
+
+      .docs-title-ag {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(74, 55, 40, 0.1);
+        padding-bottom: 0.5rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .docs-title-ag {
+          border-color: rgba(237, 242, 247, 0.1);
+        }
+      }
+
+      .docs-list-ag {
+        list-style-type: none;
+        padding: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #718096;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .docs-list-ag li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .docs-list-ag li::before {
+        content: "✦";
+        color: #3182ce;
+        flex-shrink: 0;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .docs-list-ag li::before {
+          color: #63b3ed;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Intro -->
+    <header class="demo-intro">
+      <span class="demo-tag">Travel Showcase</span>
+      <h1 class="demo-title">Travel Avatar Component</h1>
+      <p class="demo-desc">
+        A customized documentation showcase combining continuous compass frames,
+        elastic profile zooms, and interactive orbiting status badges.
+      </p>
+    </header>
+
+    <!-- Postcard Widget Panel -->
+    <div class="postcard-panel-ag">
+      <!-- Vintage postmark stamp -->
+      <div class="postcard-postmark-ag">
+        Poste Aérienne<br />
+        19 Jul 2026<br />
+        Paris, FR
+      </div>
+
+      <header class="postcard-header-ag">
+        <h2 class="postcard-title-ag">Explorer Logbook</h2>
+      </header>
+
+      <main class="postcard-body-ag">
+        <!-- Interactive Travel Avatar Component -->
+        <div
+          class="travel-avatar-wrapper-ag"
+          tabindex="0"
+          aria-label="Traveler profile. Hover to reveal badges."
+        >
+          <!-- Compass Rotating ring -->
+          <div class="avatar-compass-ag" aria-hidden="true"></div>
+
+          <!-- Core Profile Image -->
+          <div class="avatar-core-ag">
+            <img
+              class="avatar-img-ag"
+              src="traveler.png"
+              alt="Traveler Portrait"
+            />
+          </div>
+
+          <!-- Orbit Badges -->
+          <span
+            class="orbit-badge-ag orbit-badge-1"
+            title="Flights & Travel"
+            role="img"
+            aria-label="Flight Badge"
+            >✈️</span
+          >
+          <span
+            class="orbit-badge-ag orbit-badge-2"
+            title="Photography Logs"
+            role="img"
+            aria-label="Camera Badge"
+            >📷</span
+          >
+          <span
+            class="orbit-badge-ag orbit-badge-3"
+            title="World Map Explorations"
+            role="img"
+            aria-label="Globe Badge"
+            >🗺️</span
+          >
+        </div>
+
+        <!-- Status Info -->
+        <div class="status-box-ag">
+          <span class="location-tag-ag">📍 Chamonix-Mont-Blanc, France</span>
+          <h3
+            style="
+              margin: 0.25rem 0 0.5rem;
+              font-size: 1.15rem;
+              font-weight: 700;
+            "
+          >
+            Sarah Jenkins
+          </h3>
+          <p class="status-text-ag">
+            Hiking through the French Alps. Capturing glacier transitions,
+            mapping new trails, and tracking atmospheric heights.
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <!-- Help helper -->
+    <div class="postcard-helper-ag">
+      SYS.INSTRUCTION: Hover your cursor or use the [ Tab ] key to focus the
+      traveler profile circle. Hover over the orbit icons to see details.
+    </div>
+
+    <!-- Documentation Details -->
+    <section class="demo-docs-ag">
+      <h3 class="docs-title-ag">Features & Showcase Specifications</h3>
+      <ul class="docs-list-ag">
+        <li>
+          <strong>Compass Dial Border</strong>: Features a dashed circle that
+          rotates continuously at 24s and spins faster on hover to create a
+          mechanical compass aesthetic.
+        </li>
+        <li>
+          <strong>Elastic Orbiting Badges</strong>: Expanding badges slide
+          outwards to precise positions (plane, camera, map) on hover/focus
+          using smooth CSS transitions.
+        </li>
+        <li>
+          <strong>Interactive Image Zoom</strong>: The profile photo expands and
+          zooms inward elastically, giving a rich, premium feel.
+        </li>
+        <li>
+          <strong>Fully Accessible</strong>: Supports full tab index focus
+          navigation and handles screen reader descriptions using semantic
+          attributes.
+        </li>
+      </ul>
+    </section>
+  </body>
+</html>
